@@ -1,2 +1,2 @@
 // This Script Creates a New Database And Switches To That
-use mydb
+use my_db
