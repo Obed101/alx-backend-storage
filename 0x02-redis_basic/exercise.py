@@ -2,7 +2,7 @@
 """
 The main class file for the redis implementation
 """
-from typing import Any
+from typing import Any, Union
 import redis
 import uuid
 
@@ -14,8 +14,8 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
     
-    def store(self, data: str) -> Any:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """Stores an instance and returns its id"""
-        id = uuid.uuid4()
+        id = str(uuid.uuid4())
         redis.set(data, id)
         return id
