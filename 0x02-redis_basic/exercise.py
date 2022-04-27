@@ -68,7 +68,7 @@ class Cache:
         """This is the inputstance initializer"""
         self._redis = redis.Redis()
         self._redis.flushdb()
-    
+
     @count_calls
     @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
@@ -77,15 +77,15 @@ class Cache:
         self._redis.set(data, id)
         return id
 
-    def get(self, key: str, fn: Optional[Callable
-                                         ] = None) -> Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Optional[Callable] = None
+            ) -> Union[str, bytes, int, float]:
         """ This method calls a callable on the @key's value """
         value = self._redis.get(key)
         if fn:
             return fn(value)
         else:
             return value
-    
+
     def get_str(self, key: str) -> str:
         """Gets a string repr of key's value"""
         return self._redis.get(key).decode("utf-8")
