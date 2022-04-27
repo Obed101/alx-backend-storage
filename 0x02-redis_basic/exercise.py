@@ -7,7 +7,7 @@ import redis
 import uuid
 
 
-class Cache():
+class Cache:
     """ This is the redis caching class """
     def __init__(self) -> None:
         """This is the instance initializer"""
