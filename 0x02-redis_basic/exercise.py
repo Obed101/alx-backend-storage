@@ -13,7 +13,7 @@ class Cache():
         """This is the instance initializer"""
         _client = client.flushdb()
     
-    def store(self, data: Any) -> str:
+    def store(self, data: Any) -> Any:
         """Stores an instance and returns its id"""
         id = uuid.uuid4
         redis.set(data, id)
