@@ -47,7 +47,7 @@ class Cache:
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Stores an instance and returns its id"""
         id = str(uuid.uuid4())
-        redis.set(data, id)
+        self._redis.set(data, id)
         return id
 
     def get(self, key: str, fn: Optional[Callable
