@@ -16,6 +16,6 @@ class Cache():
     
     def store(self, data: str) -> Any:
         """Stores an instance and returns its id"""
-        id = uuid.uuid4
+        id = uuid.uuid4()
         redis.set(data, id)
         return id
