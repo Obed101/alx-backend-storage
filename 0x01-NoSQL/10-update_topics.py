@@ -6,7 +6,5 @@ def update_topics(mongo_collection, name, topics):
     """ This functions updates school's topics
     where name == Name
     """
-    name_match = {"name": name}
-    new_topic = {"$set": {"topics", topics}}
 
-    return mongo_collection.update_many(name_match, new_topic)
+    return mongo_collection.update_many({"name": name}, {"$set": {"topics": topics}})
