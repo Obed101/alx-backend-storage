@@ -11,8 +11,9 @@ count = 0
 
 def get_page(url: str) -> str:
     """This function caches an obtained document from a url"""
+
     _redis.set(f"cached:{url}", count)
-    response = requests.get(url)
+    response = requests.get(url, proxies=proxies)
     _redis.incr(f"count:{url}")
     _redis.setex(f"cached:{url}", 10, _redis.get(f"cached:{url}"))
 
