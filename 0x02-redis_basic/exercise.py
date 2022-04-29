@@ -95,5 +95,5 @@ class Cache:
         value = self.get(key)
         try:
             return int(value.decode("utf-8"))
-        except Exception:
-            return ValueError(" Wrong argument passed ")
+        except ValueError:
+            return 0
