@@ -7,4 +7,4 @@ def update_topics(mongo_collection, name, topics):
     name_match = { "name": name }
     new_topic = { "$set": { "topics", topics } }
 
-    return mongo_collection.update_many(name_match, new_topic)
+    return mongo_collection.update(name_match, new_topic)
